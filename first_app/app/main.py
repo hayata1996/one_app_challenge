@@ -1,6 +1,9 @@
 import cv2
 import mediapipe as mp
 import numpy as np
+from utils import logger
+
+logger = logger.get_logger(name=__name__, debug=True)
 
 # MediaPipeのセットアップ
 mp_drawing = mp.solutions.drawing_utils
@@ -20,7 +23,7 @@ with mp_face_mesh.FaceMesh(
     min_detection_confidence=0.5,
     min_tracking_confidence=0.5,
 ) as face_mesh:
-
+    logger.debug("Start capturing")
     # while True:
     while cap.isOpened():
         success, image = cap.read()
@@ -59,7 +62,9 @@ with mp_face_mesh.FaceMesh(
         cv2.imshow('MediaPipe FaceMesh on Black Background', background)
         # "q"を押すと終了
         if cv2.waitKey(10) & 0xFF == ord('q'):
+            logger.debug("End capturing")
             break
 
 cap.release()
 cv2.destroyAllWindows()
+logger.debug("release camera and close all windows")

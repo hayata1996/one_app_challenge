@@ -8,10 +8,15 @@ dependencies = [
     "mediapipe>=0.10.20",
     "numpy>=1.26.4",
     "opencv-python>=4.10.0.84",
+    "pyautogui>=0.9.54",
+    "pyocr>=0.8.5",
+    "pytesseract>=0.3.13",
+    "selenium>=4.27.1",
 ]
 
 [dependency-groups]
 dev = [
     "flake8>=7.1.1",
+    "ipykernel>=6.29.5",
     "pytest>=8.3.4",
 ]
